@@ -4,10 +4,11 @@ Class containing all the variables for the core "Hangman" game to work, regardle
 27/09/2020 by Loïc (Pyrrha) TOCQUET
 
 '''
-
+lettersWithAccents = ["a", "e", "i", "o", "u"]
+lettersAccented = [["à", "â"], ["é", "è", "ê", "ë"], ["ï", "î"], ["ô"], ["û"]]
 
 class GameState:
-  #Instantiate the GameState object so that it's ready to use
+  #Instantiates the GameState object so that it's ready to use
   #word (string) : word hidden by the game that the user should try to find
   #highScorePlayer(string) :Name of best player
   #highScore (int) : Best score (games won in a row)
@@ -31,6 +32,11 @@ class GameState:
     for i, letter in enumerate(self.word):
       if letter == attemptedLetter:
         self.revealedList[i] = True
+      if attemptedLetter in lettersWithAccents:
+        for accents in lettersAccented[lettersWithAccents.index(attemptedLetter)]:
+          if accents == letter:
+            self.revealedList[i] = True
+
 
   #returns the state of the win condition
   def hasWon(self):
