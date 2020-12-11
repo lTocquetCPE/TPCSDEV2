@@ -39,6 +39,8 @@ def startGame(mainWindow=None, prevGameState=None):
 def checkInput(mainWindow):
     letter = mainWindow.letterEntry.get()
 
+    if mainWindow.popupState:
+        return False
     if len(letter) != 1:
         mainWindow.alert("Veuillez entrer une seule lettre")
         return False

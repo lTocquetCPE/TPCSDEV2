@@ -16,6 +16,7 @@ class MainWindow(Tk):
         Tk.__init__(self)
 
         self.currentImg = None
+        self.popupState = False
 
         # window options
         self.title("Jeu du Pendu")
@@ -38,11 +39,15 @@ class MainWindow(Tk):
 
     # Opens a popup
 
+    def togglePopupState(self):
+        self.popupState = not self.popupState
+
     def alert(self, msg):
+        self.togglePopupState()
         popup = Toplevel()
         popup.title('Jeu du pendu')
         Label(popup, text=msg).pack()
-        Button(popup, text='Quitter', command=popup.destroy).pack(
+        Button(popup, text='Quitter', command=lambda: [popup.destroy(), self.togglePopupState()]).pack(
             padx=10, pady=10)
         popup.grab_set()
 
@@ -60,4 +65,5 @@ class MainWindow(Tk):
             padx=10, pady=10)
         Button(popup, text='Quitter', command=lambda: exit()).pack(
             padx=10, pady=10)
+
         popup.grab_set()
