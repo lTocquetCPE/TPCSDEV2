@@ -1,4 +1,4 @@
 # TPCSDEV2
 
 TP02 CSDEV CPE LYON
-Terminal version of the Hangman game project for CPE LYON. The objective was getting at ease with python and good practices
+Hangman game coded in console and GUI version for the CPE Lyon CSDEV1 Course. It is a simple game to make sure we knew how python and tkinter works
