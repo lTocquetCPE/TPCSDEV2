@@ -23,11 +23,11 @@ class GameState:
     self.highScore = highScore
 
 
-  #handles the letter attempt and the reveal of the right letters in the displayword attribute. Displays if a latter has already been attempted
+  #handles the letter attempt and the reveal of the right letters in the displayword attribute. Displays if a latter has already been attempted. Returns 0 if the try is not valid
   def letterAttempt(self, attemptedLetter):
     if attemptedLetter in self.alreadyTriedLetters:
       print("You have already tried the ", attemptedLetter, " !\n")
-      return
+      return 0
     self.alreadyTriedLetters += attemptedLetter
     for i, letter in enumerate(self.word):
       if letter == attemptedLetter:
@@ -36,7 +36,7 @@ class GameState:
         for accents in lettersAccented[lettersWithAccents.index(attemptedLetter)]:
           if accents == letter:
             self.revealedList[i] = True
-
+    return 1
 
   #returns the state of the win condition
   def hasWon(self):
